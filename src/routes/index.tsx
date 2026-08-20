@@ -1,24 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { WindowProvider } from "@/os/store";
+import { SettingsProvider } from "@/os/settings";
+import Desktop from "@/os/Desktop";
+import MobileShell from "@/os/MobileShell";
+import { profile } from "@/data/portfolio";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = `${profile.name} — Developer Desktop Portfolio`;
+const description =
+  "Explore Debargha Chowdhury's portfolio as a Windows 11-inspired desktop: projects, resume, IoT work, tech stack and contact details.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const isMobile = useIsMobile();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SettingsProvider>
+      <WindowProvider>
+        <h1 className="sr-only">
+          {profile.name} — {profile.title}
+        </h1>
+        {isMobile ? <MobileShell /> : <Desktop />}
+      </WindowProvider>
+    </SettingsProvider>
   );
 }
