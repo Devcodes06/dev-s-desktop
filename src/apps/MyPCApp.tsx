@@ -162,7 +162,7 @@ export default function MyPCApp() {
           )}
           {path.length === 0 && (
             <p className="mt-6 flex items-center gap-2 text-xs text-muted-foreground">
-              <Monitor className="h-3.5 w-3.5" /> Double-click a folder to explore.
+              <Monitor className="h-3.5 w-3.5" /> Single-click a folder to explore.
             </p>
           )}
         </div>
