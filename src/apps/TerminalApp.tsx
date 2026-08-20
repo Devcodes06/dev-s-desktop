@@ -36,15 +36,15 @@ export default function TerminalApp() {
       case "help":
         push(
           "Available commands:",
-          "  about       open the About Me app",
-          "  skills      list technologies",
-          "  projects    list projects",
-          "  resume      open the resume viewer",
-          "  contact     open contact details",
-          "  socials     list social profiles",
-          "  whoami      short bio",
-          "  github      open GitHub profile",
-          "  clear       clear the terminal",
+          "about:\u00a0 \u00a0 \u00a0 \u00a0open the About Me app",
+          "skills:\u00a0 \u00a0 \u00a0 list technologies",
+          "projects:\u00a0 \u00a0 list projects",
+          "resume:\u00a0 \u00a0 \u00a0 open the resume viewer",
+          "contact:\u00a0 \u00a0 \u00a0open contact details",
+          "socials:\u00a0 \u00a0 \u00a0list social profiles",
+          "whoami:\u00a0 \u00a0 \u00a0 short bio",
+          "github:\u00a0 \u00a0 \u00a0 open GitHub profile",
+          "clear:\u00a0 \u00a0 \u00a0 \u00a0clear the terminal",
           "",
         );
         break;
