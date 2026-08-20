@@ -10,7 +10,11 @@ export default function DesktopIcons() {
   return (
     <div
       className="absolute inset-0 grid content-start justify-start gap-1 p-4"
-      style={{ gridTemplateColumns: "repeat(auto-fill, 96px)", gridAutoRows: "96px" }}
+      style={{
+        gridTemplateRows: "repeat(auto-fill, 96px)",
+        gridAutoFlow: "column",
+        gridAutoColumns: "96px",
+      }}
       onPointerDown={(e) => {
         if (e.target === e.currentTarget) setSelected(null);
       }}
