@@ -11,7 +11,7 @@ export default function DesktopIcons() {
     <div
       className="absolute inset-0 grid justify-start gap-1 p-4"
       style={{
-        gridTemplateRows: "repeat(auto-fill, 96px)",
+        gridTemplateRows: "repeat(6, 96px)",
         gridAutoFlow: "column",
         gridAutoColumns: "96px",
       }}
