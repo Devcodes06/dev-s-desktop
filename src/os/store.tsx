@@ -137,13 +137,14 @@ export function WindowProvider({ children }: { children: ReactNode }) {
   const cycle = useCallback(() => {
     setWindows((ws) => {
       if (ws.length < 2) return ws;
-      const sorted = [...ws].sort((a, b) => a.z - b.z);
-      const next = sorted[0];
-      setActiveId(next.id);
+      const next = [...ws].sort((a, b) => a.z - b.z)[0];
+      if (!next) return ws;
+      const nextId = next.id;
+      setActiveId(nextId);
       setTopZ((z) => {
         const nz = z + 1;
         setWindows((cur) =>
-          cur.map((w) => (w.id === next.id ? { ...w, z: nz, minimized: false } : w)),
+          cur.map((w) => (w.id === nextId ? { ...w, z: nz, minimized: false } : w)),
         );
         return nz;
       });
