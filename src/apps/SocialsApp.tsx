@@ -48,6 +48,9 @@ export default function SocialsApp() {
           );
         })}
       </div>
+      <p className="mt-4 text-xs text-muted-foreground">
+        Reply times vary with caffeine levels. Usually fast.
+      </p>
     </AppScroll>
   );
 }

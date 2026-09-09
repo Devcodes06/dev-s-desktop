@@ -239,7 +239,7 @@ export const skills: SkillCategory[] = [
   {
     category: "Currently Learning",
     items: [
-      { name: "[ADD TECHNOLOGY]", note: "Update this list as you pick things up" },
+      { name: "[ADD TECHNOLOGY]", note: "Currently learning. Bugs included at no extra cost." },
     ],
   },
 ];
