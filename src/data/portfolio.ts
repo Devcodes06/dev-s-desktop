@@ -1,4 +1,5 @@
 import wallpaperAsset from "@/assets/wallpaper.jpg.asset.json";
+import urlShortenerShot from "@/assets/url-shortener.png.asset.json";
 import profileAsset from "@/assets/profile.jpg.asset.json";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
 
@@ -35,14 +36,14 @@ export const socials = [
   {
     label: "GitHub",
     icon: "github",
-    handle: "[ADD GITHUB USERNAME]",
-    url: "",
+    handle: "@Devcodes06",
+    url: "https://github.com/Devcodes06",
   },
   {
     label: "LinkedIn",
     icon: "linkedin",
-    handle: "[ADD LINKEDIN URL]",
-    url: "",
+    handle: "@debargha404",
+    url: "https://www.linkedin.com/in/debargha404/",
   },
   {
     label: "Email",
@@ -53,8 +54,14 @@ export const socials = [
   {
     label: "LeetCode",
     icon: "code",
-    handle: "[ADD LEETCODE PROFILE]",
-    url: "",
+    handle: "@Debargha007",
+    url: "https://leetcode.com/u/Debargha007/",
+  },
+  {
+    label: "Instagram",
+    icon: "instagram",
+    handle: "@debarghaofficial",
+    url: "https://www.instagram.com/debarghaofficial/",
   },
 ] as const;
 
