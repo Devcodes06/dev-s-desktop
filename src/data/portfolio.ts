@@ -78,6 +78,7 @@ export type Project = {
   features: string[];
   github: string;
   demo: string;
+  screenshots?: { src: string; caption: string }[];
 };
 
 export const projects: Project[] = [
@@ -107,7 +108,13 @@ export const projects: Project[] = [
       "Postman API collection",
     ],
     github: "",
-    demo: "",
+    demo: "https://url-shortener-gray-two.vercel.app/",
+    screenshots: [
+      {
+        src: urlShortenerShot.url,
+        caption: "Snip — the live URL shortener landing page.",
+      },
+    ],
   },
   {
     id: "crop-yield",
