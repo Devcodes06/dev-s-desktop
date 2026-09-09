@@ -63,7 +63,7 @@ export const socials = [
     handle: "@debarghaofficial",
     url: "https://www.instagram.com/debarghaofficial/",
   },
-] as const;
+];
 
 export type Project = {
   id: string;
