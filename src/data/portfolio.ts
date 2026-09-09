@@ -1,4 +1,5 @@
 import wallpaperAsset from "@/assets/wallpaper.jpg.asset.json";
+import urlShortenerShot from "@/assets/url-shortener.png.asset.json";
 import profileAsset from "@/assets/profile.jpg.asset.json";
 import resumeAsset from "@/assets/resume.pdf.asset.json";
 
@@ -35,14 +36,14 @@ export const socials = [
   {
     label: "GitHub",
     icon: "github",
-    handle: "[ADD GITHUB USERNAME]",
-    url: "",
+    handle: "@Devcodes06",
+    url: "https://github.com/Devcodes06",
   },
   {
     label: "LinkedIn",
     icon: "linkedin",
-    handle: "[ADD LINKEDIN URL]",
-    url: "",
+    handle: "@debargha404",
+    url: "https://www.linkedin.com/in/debargha404/",
   },
   {
     label: "Email",
@@ -53,10 +54,16 @@ export const socials = [
   {
     label: "LeetCode",
     icon: "code",
-    handle: "[ADD LEETCODE PROFILE]",
-    url: "",
+    handle: "@Debargha007",
+    url: "https://leetcode.com/u/Debargha007/",
   },
-] as const;
+  {
+    label: "Instagram",
+    icon: "instagram",
+    handle: "@debarghaofficial",
+    url: "https://www.instagram.com/debarghaofficial/",
+  },
+];
 
 export type Project = {
   id: string;
@@ -71,6 +78,7 @@ export type Project = {
   features: string[];
   github: string;
   demo: string;
+  screenshots?: { src: string; caption: string }[];
 };
 
 export const projects: Project[] = [
@@ -100,7 +108,13 @@ export const projects: Project[] = [
       "Postman API collection",
     ],
     github: "",
-    demo: "",
+    demo: "https://url-shortener-gray-two.vercel.app/",
+    screenshots: [
+      {
+        src: urlShortenerShot.url,
+        caption: "Snip — the live URL shortener landing page.",
+      },
+    ],
   },
   {
     id: "crop-yield",
@@ -145,6 +159,17 @@ export const skills: SkillCategory[] = [
       { name: "Java", note: "OOP and coursework projects" },
       { name: "Python", note: "IoT backends and scripting" },
       { name: "C", note: "Fundamentals and embedded context" },
+      { name: "Bash Scripting", note: "Automating the things I refuse to type twice" },
+    ],
+  },
+  {
+    category: "Frontend / Web Development",
+    items: [
+      { name: "HTML", note: "Semantic structure for web interfaces" },
+      { name: "CSS", note: "Layout, responsive design and styling" },
+      { name: "EJS", note: "Server-rendered templates for Express apps" },
+      { name: "React", note: "Component-based user interfaces" },
+      { name: "Bootstrap", note: "Fast, consistent UI scaffolding" },
     ],
   },
   {
@@ -170,6 +195,9 @@ export const skills: SkillCategory[] = [
     items: [
       { name: "MongoDB", note: "Document storage for app data" },
       { name: "MySQL", note: "Relational schemas and queries" },
+      { name: "PostgreSQL", note: "Relational database for application data" },
+      { name: "Redis", note: "Caching and fast key-value storage" },
+      { name: "PL/SQL", note: "Stored procedures and database logic" },
     ],
   },
   {
@@ -179,6 +207,7 @@ export const skills: SkillCategory[] = [
       { name: "GitHub Actions", note: "CI workflows" },
       { name: "Vercel", note: "Deployment of full-stack projects" },
       { name: "Linux CLI", note: "Daily driver for development" },
+      { name: "Nginx", note: "Reverse proxy and web server configuration" },
     ],
   },
   {
@@ -187,7 +216,11 @@ export const skills: SkillCategory[] = [
       { name: "Raspberry Pi", note: "Edge gateway for sensor systems" },
       { name: "ESP32", note: "Sensor nodes" },
       { name: "RS485", note: "Industrial sensor communication" },
-      { name: "Sensor Integration", note: "Soil, humidity and environment sensing" },
+      { name: "Arduino", note: "Microcontroller prototyping and firmware" },
+      {
+        name: "Sensor & Actuator Integration",
+        note: "Wiring, reading and driving a range of sensors and actuators",
+      },
     ],
   },
   {
@@ -196,12 +229,17 @@ export const skills: SkillCategory[] = [
       { name: "Git", note: "Version control" },
       { name: "GitHub", note: "Collaboration and hosting" },
       { name: "VS Code", note: "Editor" },
+      { name: "Google Colab", note: "Notebooks for experiments and data work" },
+      { name: "Kaggle", note: "Datasets and practice notebooks" },
+      { name: "Wokwi", note: "Simulating circuits before risking real hardware" },
+      { name: "ThingSpeak", note: "IoT data logging and dashboards" },
+      { name: "Cisco Packet Tracer", note: "Network topology design and labs" },
     ],
   },
   {
     category: "Currently Learning",
     items: [
-      { name: "[ADD TECHNOLOGY]", note: "Update this list as you pick things up" },
+      { name: "[ADD TECHNOLOGY]", note: "Currently learning. Bugs included at no extra cost." },
     ],
   },
 ];

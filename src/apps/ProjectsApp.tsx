@@ -53,7 +53,25 @@ export function ProjectDetail({ project }: { project: Project }) {
         </div>
         <Panel>
           <SectionTitle>Screenshots</SectionTitle>
-          <Placeholder>[ADD PROJECT SCREENSHOTS]</Placeholder>
+          {project.screenshots?.length ? (
+            <div className="grid gap-3">
+              {project.screenshots.map((s) => (
+                <figure key={s.src} className="overflow-hidden rounded-lg border border-border">
+                  <img
+                    src={s.src}
+                    alt={`${project.name} screenshot`}
+                    loading="lazy"
+                    className="w-full"
+                  />
+                  <figcaption className="border-t border-border bg-secondary/50 px-3 py-2 text-xs text-muted-foreground">
+                    {s.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          ) : (
+            <Placeholder>[ADD PROJECT SCREENSHOTS]</Placeholder>
+          )}
         </Panel>
         <div className="flex flex-wrap gap-2 pb-2">
           {project.github ? (
@@ -75,7 +93,7 @@ export function ProjectDetail({ project }: { project: Project }) {
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm hover:bg-accent"
             >
-              <Globe className="h-4 w-4" /> Live demo
+              <Globe className="h-4 w-4" /> View Live Project
             </a>
           ) : (
             <Placeholder>[ADD LIVE DEMO LINK]</Placeholder>
