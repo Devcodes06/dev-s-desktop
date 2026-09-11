@@ -4,7 +4,7 @@ A personal portfolio web application designed as an interactive, fully functiona
 
 ---
 
-## 🌟 Features
+##  Features
 
 - **Authentic Windows 11 Desktop Experience:**
   - Draggable, resizable, stackable window management with minimize, maximize, and focus capabilities.
@@ -31,7 +31,7 @@ A personal portfolio web application designed as an interactive, fully functiona
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **Framework:** [React 19](https://react.dev/)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
@@ -43,7 +43,7 @@ A personal portfolio web application designed as an interactive, fully functiona
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
