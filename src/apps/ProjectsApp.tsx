@@ -52,8 +52,23 @@ export function ProjectDetail({ project }: { project: Project }) {
           </Panel>
         </div>
         <Panel>
-          <SectionTitle>Screenshots</SectionTitle>
-          {project.screenshot ? (
+          {project.screenshots?.length ? (
+            <div className="grid gap-3">
+              {project.screenshots.map((s) => (
+                <figure key={s.src} className="overflow-hidden rounded-lg border border-border">
+                  <img
+                    src={s.src}
+                    alt={`${project.name} screenshot`}
+                    loading="lazy"
+                    className="w-full"
+                  />
+                  <figcaption className="border-t border-border bg-secondary/50 px-3 py-2 text-xs text-muted-foreground">
+                    {s.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          ) : project.screenshot ? (
             <img src={project.screenshot} alt={`${project.name} screenshot`} className="w-full rounded-md" />
           ) : (
             <Placeholder>[ADD PROJECT SCREENSHOTS]</Placeholder>

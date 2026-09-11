@@ -2,7 +2,13 @@ import { Github, Linkedin, Mail, Code2, Instagram, ExternalLink } from "lucide-r
 import { socials } from "@/data/portfolio";
 import { AppScroll, Panel, Placeholder, SectionTitle } from "@/os/ui";
 
-const ICONS = { github: Github, linkedin: Linkedin, mail: Mail, code: Code2, instagram: Instagram } as const;
+const ICONS = {
+  github: Github,
+  linkedin: Linkedin,
+  mail: Mail,
+  code: Code2,
+  instagram: Instagram,
+} as const;
 
 export default function SocialsApp() {
   return (
@@ -42,6 +48,9 @@ export default function SocialsApp() {
           );
         })}
       </div>
+      <p className="mt-4 text-xs text-muted-foreground">
+        Reply times vary with caffeine levels. Usually fast.
+      </p>
     </AppScroll>
   );
 }

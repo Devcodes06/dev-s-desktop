@@ -1,3 +1,8 @@
+import wallpaperAsset from "@/assets/wallpaper.jpg.asset.json";
+import urlShortenerShot from "@/assets/url-shortener.png.asset.json";
+import profileAsset from "@/assets/profile.jpg.asset.json";
+import resumeAsset from "@/assets/resume.pdf.asset.json";
+
 /**
  * SINGLE SOURCE OF TRUTH for the whole portfolio.
  * Update this file to change any content on the desktop.
@@ -15,29 +20,29 @@ export const profile = {
   location: "Burdwan, West Bengal, India",
   phone: "+91 9641829986",
   email: "debarghachowdhury.work@gmail.com",
-  photo: "/assets/profile/debargha.jpg",
-  wallpaper: "/assets/wallpaper/windows-11.jpg",
+  photo: profileAsset.url,
+  wallpaper: wallpaperAsset.url,
 };
 
 export const resume = {
-  url: "/assets/resume/Debargha_Chowdhury_Resume.pdf",
+  url: resumeAsset.url,
   fileName: "Debargha_Chowdhury_Resume.pdf",
   fileType: "PDF Document",
   updated: "2026",
-  size: "173 KB",
+  size: `${(resumeAsset.size / 1024).toFixed(0)} KB`,
 };
 
 export const socials = [
   {
     label: "GitHub",
     icon: "github",
-    handle: "GitHub",
+    handle: "@Devcodes06",
     url: "https://github.com/Devcodes06",
   },
   {
     label: "LinkedIn",
     icon: "linkedin",
-    handle: "LinkedIn",
+    handle: "@debargha404",
     url: "https://www.linkedin.com/in/debargha404/",
   },
   {
@@ -49,16 +54,16 @@ export const socials = [
   {
     label: "LeetCode",
     icon: "code",
-    handle: "LeetCode",
+    handle: "@Debargha007",
     url: "https://leetcode.com/u/Debargha007/",
   },
   {
     label: "Instagram",
     icon: "instagram",
-    handle: "Instagram",
+    handle: "@debarghaofficial",
     url: "https://www.instagram.com/debarghaofficial/",
   },
-] as const;
+];
 
 export type Project = {
   id: string;
@@ -74,6 +79,7 @@ export type Project = {
   github: string;
   demo: string;
   screenshot?: string;
+  screenshots?: { src: string; caption: string }[];
 };
 
 export const projects: Project[] = [
@@ -105,6 +111,12 @@ export const projects: Project[] = [
     github: "",
     demo: "https://url-shortener-gray-two.vercel.app/",
     screenshot: "/assets/projects/url-shortener.png",
+    screenshots: [
+      {
+        src: urlShortenerShot.url,
+        caption: "Snip — the live URL shortener landing page.",
+      },
+    ],
   },
   {
     id: "crop-yield",
@@ -149,17 +161,17 @@ export const skills: SkillCategory[] = [
       { name: "Java", note: "OOP and coursework projects" },
       { name: "Python", note: "IoT backends and scripting" },
       { name: "C", note: "Fundamentals and embedded context" },
-      { name: "Bash Scripting", note: "Command-line automation and scripting" },
+      { name: "Bash Scripting", note: "Automating the things I refuse to type twice" },
     ],
   },
   {
     category: "Frontend / Web Development",
     items: [
-      { name: "HTML", note: "Semantic page structure" },
-      { name: "CSS", note: "Responsive interface styling" },
-      { name: "EJS", note: "Server-rendered templates" },
-      { name: "React", note: "Component-based web interfaces" },
-      { name: "Bootstrap", note: "Responsive UI components" },
+      { name: "HTML", note: "Semantic structure for web interfaces" },
+      { name: "CSS", note: "Layout, responsive design and styling" },
+      { name: "EJS", note: "Server-rendered templates for Express apps" },
+      { name: "React", note: "Component-based user interfaces" },
+      { name: "Bootstrap", note: "Fast, consistent UI scaffolding" },
     ],
   },
   {
@@ -185,9 +197,9 @@ export const skills: SkillCategory[] = [
     items: [
       { name: "MongoDB", note: "Document storage for app data" },
       { name: "MySQL", note: "Relational schemas and queries" },
-      { name: "PostgreSQL", note: "Relational database systems" },
-      { name: "Redis", note: "In-memory data store" },
-      { name: "PL/SQL", note: "Procedural SQL programming" },
+      { name: "PostgreSQL", note: "Relational database for application data" },
+      { name: "Redis", note: "Caching and fast key-value storage" },
+      { name: "PL/SQL", note: "Stored procedures and database logic" },
     ],
   },
   {
@@ -197,7 +209,7 @@ export const skills: SkillCategory[] = [
       { name: "GitHub Actions", note: "CI workflows" },
       { name: "Vercel", note: "Deployment of full-stack projects" },
       { name: "Linux CLI", note: "Daily driver for development" },
-      { name: "Nginx", note: "Web server and reverse proxy" },
+      { name: "Nginx", note: "Reverse proxy and web server configuration" },
     ],
   },
   {
@@ -206,8 +218,11 @@ export const skills: SkillCategory[] = [
       { name: "Raspberry Pi", note: "Edge gateway for sensor systems" },
       { name: "ESP32", note: "Sensor nodes" },
       { name: "RS485", note: "Industrial sensor communication" },
-      { name: "Arduino", note: "Microcontroller prototyping" },
-      { name: "Sensor & Actuator Integration", note: "Integrating multiple sensors and actuators" },
+      { name: "Arduino", note: "Microcontroller prototyping and firmware" },
+      {
+        name: "Sensor & Actuator Integration",
+        note: "Wiring, reading and driving a range of sensors and actuators",
+      },
     ],
   },
   {
@@ -216,17 +231,17 @@ export const skills: SkillCategory[] = [
       { name: "Git", note: "Version control" },
       { name: "GitHub", note: "Collaboration and hosting" },
       { name: "VS Code", note: "Editor" },
-      { name: "Google Colab", note: "Cloud notebooks" },
-      { name: "Kaggle", note: "Data science notebooks and datasets" },
-      { name: "Wokwi", note: "Embedded systems simulation" },
-      { name: "ThingSpeak", note: "IoT data visualization" },
-      { name: "Cisco Packet Tracer", note: "Network simulation" },
+      { name: "Google Colab", note: "Notebooks for experiments and data work" },
+      { name: "Kaggle", note: "Datasets and practice notebooks" },
+      { name: "Wokwi", note: "Simulating circuits before risking real hardware" },
+      { name: "ThingSpeak", note: "IoT data logging and dashboards" },
+      { name: "Cisco Packet Tracer", note: "Network topology design and labs" },
     ],
   },
   {
     category: "Currently Learning",
     items: [
-      { name: "[ADD TECHNOLOGY]", note: "Update this list as you pick things up" },
+      { name: "[ADD TECHNOLOGY]", note: "Currently learning. Bugs included at no extra cost." },
     ],
   },
 ];
@@ -293,3 +308,4 @@ export const recycleBin = [
   { name: "works-on-my-machine.log", note: "Baud rate: 9600. Sensor: unimpressed." },
   { name: "notes-2am.md", note: "Genius ideas, illegible handwriting." },
 ];
+
