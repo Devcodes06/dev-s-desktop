@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "windows11-fluent-system-icons",
+  "version": "1.0.0",
+  "license": "MIT",
+  "upstream": {
+    "name": "Fluent UI System Icons",
+    "repository": "https://github.com/microsoft/fluentui-system-icons",
+    "license": "MIT",
+    "copyright": "Microsoft Corporation"
+  },
+  "safetyNotes": {
+    "startIcon": "Neutral grid 'apps' icon utilized. Microsoft / Windows logo is strictly avoided.",
+    "svgSanitization": "All icons validated: XML conformant, explicit viewBox, zero scripts, zero foreignObjects, zero external references."
+  },
+  "icons": {
+    "mypc": {
+      "id": "mypc",
+      "title": "My PC",
+      "fluentName": "desktop",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/mypc.svg",
+      "upstreamAssetPath": "assets/Desktop/SVG/ic_fluent_desktop_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Desktop/SVG/ic_fluent_desktop_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Monitor"
+    },
+    "resume": {
+      "id": "resume",
+      "title": "Resume",
+      "fluentName": "document_person",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/resume.svg",
+      "upstreamAssetPath": "assets/Document Person/SVG/ic_fluent_document_person_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Document%20Person/SVG/ic_fluent_document_person_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "FileText"
+    },
+    "projects": {
+      "id": "projects",
+      "title": "Projects",
+      "fluentName": "folder_briefcase",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/projects.svg",
+      "upstreamAssetPath": "assets/Folder Briefcase/SVG/ic_fluent_folder_briefcase_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Folder%20Briefcase/SVG/ic_fluent_folder_briefcase_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "FolderKanban"
+    },
+    "about": {
+      "id": "about",
+      "title": "About Me",
+      "fluentName": "person",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/about.svg",
+      "upstreamAssetPath": "assets/Person/SVG/ic_fluent_person_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person/SVG/ic_fluent_person_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "User"
+    },
+    "techstack": {
+      "id": "techstack",
+      "title": "Tech Stack",
+      "fluentName": "developer_board",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/techstack.svg",
+      "upstreamAssetPath": "assets/Developer Board/SVG/ic_fluent_developer_board_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Developer%20Board/SVG/ic_fluent_developer_board_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Cpu"
+    },
+    "socials": {
+      "id": "socials",
+      "title": "Socials",
+      "fluentName": "share_android",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/socials.svg",
+      "upstreamAssetPath": "assets/Share Android/SVG/ic_fluent_share_android_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Share%20Android/SVG/ic_fluent_share_android_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Share2"
+    },
+    "achievements": {
+      "id": "achievements",
+      "title": "Achievements",
+      "fluentName": "trophy",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/achievements.svg",
+      "upstreamAssetPath": "assets/Trophy/SVG/ic_fluent_trophy_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Trophy/SVG/ic_fluent_trophy_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Award"
+    },
+    "contact": {
+      "id": "contact",
+      "title": "Contact",
+      "fluentName": "mail",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/contact.svg",
+      "upstreamAssetPath": "assets/Mail/SVG/ic_fluent_mail_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Mail/SVG/ic_fluent_mail_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Mail"
+    },
+    "paint": {
+      "id": "paint",
+      "title": "Paint",
+      "fluentName": "color",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/paint.svg",
+      "upstreamAssetPath": "assets/Color/SVG/ic_fluent_color_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Color/SVG/ic_fluent_color_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Palette"
+    },
+    "games": {
+      "id": "games",
+      "title": "Games",
+      "fluentName": "games",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/games.svg",
+      "upstreamAssetPath": "assets/Games/SVG/ic_fluent_games_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Games/SVG/ic_fluent_games_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Gamepad2"
+    },
+    "recyclebin": {
+      "id": "recyclebin",
+      "title": "Recycle Bin",
+      "fluentName": "delete",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/recyclebin.svg",
+      "upstreamAssetPath": "assets/Delete/SVG/ic_fluent_delete_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Delete/SVG/ic_fluent_delete_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Trash2"
+    },
+    "terminal": {
+      "id": "terminal",
+      "title": "Terminal",
+      "fluentName": "window_console",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/terminal.svg",
+      "upstreamAssetPath": "assets/Window Console/SVG/ic_fluent_window_console_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Window%20Console/SVG/ic_fluent_window_console_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "TerminalSquare"
+    },
+    "personalize": {
+      "id": "personalize",
+      "title": "Settings",
+      "fluentName": "settings",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/personalize.svg",
+      "upstreamAssetPath": "assets/Settings/SVG/ic_fluent_settings_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Settings/SVG/ic_fluent_settings_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Settings"
+    },
+    "start": {
+      "id": "start",
+      "title": "Start Menu",
+      "fluentName": "apps",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/start.svg",
+      "upstreamAssetPath": "assets/Apps/SVG/ic_fluent_apps_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Apps/SVG/ic_fluent_apps_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "LayoutGrid"
+    },
+    "search": {
+      "id": "search",
+      "title": "Search",
+      "fluentName": "search",
+      "variant": "24_filled",
+      "localPath": "/assets/icons/windows11/search.svg",
+      "upstreamAssetPath": "assets/Search/SVG/ic_fluent_search_24_filled.svg",
+      "upstreamUrl": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Search/SVG/ic_fluent_search_24_filled.svg",
+      "viewBox": "0 0 24 24",
+      "fallbackLucide": "Search"
+    }
+  }
+}

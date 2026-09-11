@@ -1,11 +1,11 @@
 import { Award } from "lucide-react";
 import { achievements } from "@/data/portfolio";
-import { AppScroll, Placeholder, SectionTitle } from "@/os/ui";
+import { AppScroll, SectionTitle } from "@/os/ui";
 
 export default function AchievementsApp() {
   return (
     <AppScroll>
-      <SectionTitle>Certifications & achievements</SectionTitle>
+      <SectionTitle>Achievements</SectionTitle>
       <ol className="relative ml-3 border-l border-border pl-6">
         {achievements.map((a) => (
           <li key={a.title} className="mb-6 last:mb-0">
@@ -19,9 +19,6 @@ export default function AchievementsApp() {
           </li>
         ))}
       </ol>
-      <div className="mt-4">
-        <Placeholder>[ADD CERTIFICATE IMAGES]</Placeholder>
-      </div>
     </AppScroll>
   );
 }

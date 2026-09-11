@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, Wifi, BatteryMedium, Signal } from "lucide-react";
 import { APPS, DESKTOP_ORDER, type AppId } from "./apps";
 import { profile } from "@/data/portfolio";
+import AppIcon from "./AppIcon";
 
 export default function MobileShell() {
   const [open, setOpen] = useState<AppId | null>(null);
@@ -66,7 +67,7 @@ export default function MobileShell() {
                     onClick={() => setOpen(id)}
                     className="flex flex-col items-center gap-2 rounded-xl border border-border bg-card p-3 text-center transition-colors active:bg-accent"
                   >
-                    <a.icon className="h-6 w-6 text-primary" strokeWidth={1.6} />
+                    <AppIcon appId={id} className="h-7 w-7" alt="" />
                     <span className="text-[11px] leading-tight">{a.title}</span>
                   </button>
                 );

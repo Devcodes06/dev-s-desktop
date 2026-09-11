@@ -64,6 +64,7 @@
 }
 
 :root {
+  --taskbar-height: 56px;
   --radius: 0.5rem;
   --background: oklch(0.98 0.003 250);
   --foreground: oklch(0.21 0.02 260);
@@ -112,6 +113,7 @@
 }
 
 .dark {
+  --taskbar-height: 56px;
   --background: oklch(0.19 0.012 260);
   --foreground: oklch(0.96 0.004 250);
   --card: oklch(0.23 0.014 260);
@@ -152,6 +154,11 @@
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
   }
 
   body {

@@ -35,7 +35,8 @@ export default function Notifications() {
   return (
     <div
       aria-live="polite"
-      className="pointer-events-none fixed bottom-20 right-4 z-9997 flex w-80 flex-col gap-2"
+      style={{ bottom: "calc(var(--taskbar-height, 56px) + 24px)" }}
+      className="pointer-events-none fixed right-4 z-9997 flex w-80 flex-col gap-2"
     >
       {toasts.map((t) => (
         <div

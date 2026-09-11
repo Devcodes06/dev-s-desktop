@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { APPS, DESKTOP_ORDER, type AppId } from "./apps";
 import { useWindows } from "./store";
 import { projects, skills, achievements } from "@/data/portfolio";
+import AppIcon from "./AppIcon";
 
 type Result = { label: string; sub: string; app: AppId; payload?: unknown; title?: string };
 
@@ -52,7 +53,8 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
       <div
         role="dialog"
         aria-label="Search"
-        className="animate-flyout absolute bottom-16 left-1/2 w-[min(620px,92vw)] -translate-x-1/2 overflow-hidden rounded-xl mica-strong shadow-flyout"
+        style={{ bottom: "calc(var(--taskbar-height, 56px) + 8px)" }}
+        className="animate-flyout absolute left-1/2 w-[min(620px,92vw)] -translate-x-1/2 overflow-hidden rounded-xl mica-strong shadow-flyout"
       >
         <div className="flex items-center gap-2 border-b border-border px-4 py-3">
           <Search className="h-4 w-4 text-muted-foreground" />
@@ -75,10 +77,7 @@ export default function SearchOverlay({ onClose }: { onClose: () => void }) {
                 }}
                 className="flex w-full items-center gap-3 rounded-md px-3 py-2 text-left transition-colors hover:bg-accent"
               >
-                {(() => {
-                  const Icon = APPS[r.app].icon;
-                  return <Icon className="h-4.5 w-4.5 shrink-0 text-primary" />;
-                })()}
+                <AppIcon appId={r.app} className="h-5 w-5 shrink-0" alt="" />
                 <span className="min-w-0">
                   <span className="block truncate text-sm">{r.label}</span>
                   <span className="block truncate text-xs text-muted-foreground">{r.sub}</span>

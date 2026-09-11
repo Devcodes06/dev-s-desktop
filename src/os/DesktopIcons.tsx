@@ -2,6 +2,7 @@ import { useState } from "react";
 import { APPS, DESKTOP_ORDER, type AppId } from "./apps";
 import { useWindows } from "./store";
 import { cn } from "@/lib/utils";
+import AppIcon from "./AppIcon";
 
 export default function DesktopIcons() {
   const { openApp } = useWindows();
@@ -38,7 +39,7 @@ export default function DesktopIcons() {
                 : "hover:bg-onwall/15",
             )}
           >
-            <app.icon className="h-8 w-8 text-onwall drop-shadow-sm" strokeWidth={1.5} />
+            <AppIcon appId={id} className="h-11 w-11 drop-shadow-md" alt={app.title} />
             <span className="line-clamp-2 text-center text-[11px] leading-tight text-onwall">
               {app.title}
             </span>

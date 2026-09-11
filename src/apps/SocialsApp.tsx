@@ -1,8 +1,8 @@
-import { Github, Linkedin, Mail, Code2, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Code2, Instagram, ExternalLink } from "lucide-react";
 import { socials } from "@/data/portfolio";
 import { AppScroll, Panel, Placeholder, SectionTitle } from "@/os/ui";
 
-const ICONS = { github: Github, linkedin: Linkedin, mail: Mail, code: Code2 } as const;
+const ICONS = { github: Github, linkedin: Linkedin, mail: Mail, code: Code2, instagram: Instagram } as const;
 
 export default function SocialsApp() {
   return (

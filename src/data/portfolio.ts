@@ -1,7 +1,3 @@
-import wallpaperAsset from "@/assets/wallpaper.jpg.asset.json";
-import profileAsset from "@/assets/profile.jpg.asset.json";
-import resumeAsset from "@/assets/resume.pdf.asset.json";
-
 /**
  * SINGLE SOURCE OF TRUTH for the whole portfolio.
  * Update this file to change any content on the desktop.
@@ -19,30 +15,30 @@ export const profile = {
   location: "Burdwan, West Bengal, India",
   phone: "+91 9641829986",
   email: "debarghachowdhury.work@gmail.com",
-  photo: profileAsset.url,
-  wallpaper: wallpaperAsset.url,
+  photo: "/assets/profile/debargha.jpg",
+  wallpaper: "/assets/wallpaper/windows-11.jpg",
 };
 
 export const resume = {
-  url: resumeAsset.url,
+  url: "/assets/resume/Debargha_Chowdhury_Resume.pdf",
   fileName: "Debargha_Chowdhury_Resume.pdf",
   fileType: "PDF Document",
   updated: "2026",
-  size: `${(resumeAsset.size / 1024).toFixed(0)} KB`,
+  size: "173 KB",
 };
 
 export const socials = [
   {
     label: "GitHub",
     icon: "github",
-    handle: "[ADD GITHUB USERNAME]",
-    url: "",
+    handle: "GitHub",
+    url: "https://github.com/Devcodes06",
   },
   {
     label: "LinkedIn",
     icon: "linkedin",
-    handle: "[ADD LINKEDIN URL]",
-    url: "",
+    handle: "LinkedIn",
+    url: "https://www.linkedin.com/in/debargha404/",
   },
   {
     label: "Email",
@@ -53,8 +49,14 @@ export const socials = [
   {
     label: "LeetCode",
     icon: "code",
-    handle: "[ADD LEETCODE PROFILE]",
-    url: "",
+    handle: "LeetCode",
+    url: "https://leetcode.com/u/Debargha007/",
+  },
+  {
+    label: "Instagram",
+    icon: "instagram",
+    handle: "Instagram",
+    url: "https://www.instagram.com/debarghaofficial/",
   },
 ] as const;
 
@@ -71,6 +73,7 @@ export type Project = {
   features: string[];
   github: string;
   demo: string;
+  screenshot?: string;
 };
 
 export const projects: Project[] = [
@@ -100,7 +103,8 @@ export const projects: Project[] = [
       "Postman API collection",
     ],
     github: "",
-    demo: "",
+    demo: "https://url-shortener-gray-two.vercel.app/",
+    screenshot: "/assets/projects/url-shortener.png",
   },
   {
     id: "crop-yield",
@@ -145,6 +149,17 @@ export const skills: SkillCategory[] = [
       { name: "Java", note: "OOP and coursework projects" },
       { name: "Python", note: "IoT backends and scripting" },
       { name: "C", note: "Fundamentals and embedded context" },
+      { name: "Bash Scripting", note: "Command-line automation and scripting" },
+    ],
+  },
+  {
+    category: "Frontend / Web Development",
+    items: [
+      { name: "HTML", note: "Semantic page structure" },
+      { name: "CSS", note: "Responsive interface styling" },
+      { name: "EJS", note: "Server-rendered templates" },
+      { name: "React", note: "Component-based web interfaces" },
+      { name: "Bootstrap", note: "Responsive UI components" },
     ],
   },
   {
@@ -170,6 +185,9 @@ export const skills: SkillCategory[] = [
     items: [
       { name: "MongoDB", note: "Document storage for app data" },
       { name: "MySQL", note: "Relational schemas and queries" },
+      { name: "PostgreSQL", note: "Relational database systems" },
+      { name: "Redis", note: "In-memory data store" },
+      { name: "PL/SQL", note: "Procedural SQL programming" },
     ],
   },
   {
@@ -179,6 +197,7 @@ export const skills: SkillCategory[] = [
       { name: "GitHub Actions", note: "CI workflows" },
       { name: "Vercel", note: "Deployment of full-stack projects" },
       { name: "Linux CLI", note: "Daily driver for development" },
+      { name: "Nginx", note: "Web server and reverse proxy" },
     ],
   },
   {
@@ -187,7 +206,8 @@ export const skills: SkillCategory[] = [
       { name: "Raspberry Pi", note: "Edge gateway for sensor systems" },
       { name: "ESP32", note: "Sensor nodes" },
       { name: "RS485", note: "Industrial sensor communication" },
-      { name: "Sensor Integration", note: "Soil, humidity and environment sensing" },
+      { name: "Arduino", note: "Microcontroller prototyping" },
+      { name: "Sensor & Actuator Integration", note: "Integrating multiple sensors and actuators" },
     ],
   },
   {
@@ -196,6 +216,11 @@ export const skills: SkillCategory[] = [
       { name: "Git", note: "Version control" },
       { name: "GitHub", note: "Collaboration and hosting" },
       { name: "VS Code", note: "Editor" },
+      { name: "Google Colab", note: "Cloud notebooks" },
+      { name: "Kaggle", note: "Data science notebooks and datasets" },
+      { name: "Wokwi", note: "Embedded systems simulation" },
+      { name: "ThingSpeak", note: "IoT data visualization" },
+      { name: "Cisco Packet Tracer", note: "Network simulation" },
     ],
   },
   {

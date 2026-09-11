@@ -32,7 +32,6 @@ const DRIVE: Entry[] = [
   },
   { name: "resume", kind: "folder", target: { app: "resume" } },
   { name: "skills", kind: "folder", target: { app: "techstack" } },
-  { name: "education", kind: "folder", target: { app: "about" } },
   { name: "achievements", kind: "folder", target: { app: "achievements" } },
   { name: "contact", kind: "folder", target: { app: "contact" } },
   { name: "socials", kind: "folder", target: { app: "socials" } },
@@ -41,9 +40,7 @@ const DRIVE: Entry[] = [
 const QUICK: Entry[] = [
   { name: "Resume.pdf", kind: "file", target: { app: "resume" } },
   { name: "Projects", kind: "folder", target: { app: "projects" } },
-  { name: "Certifications", kind: "folder", target: { app: "achievements" } },
   { name: "Achievements", kind: "folder", target: { app: "achievements" } },
-  { name: "Education", kind: "folder", target: { app: "about" } },
   { name: "About Me", kind: "folder", target: { app: "about" } },
 ];
 

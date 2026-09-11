@@ -3,6 +3,7 @@ import { Minus, Square, X, Copy } from "lucide-react";
 import { APPS } from "./apps";
 import { useWindows, type WindowState } from "./store";
 import { cn } from "@/lib/utils";
+import AppIcon from "./AppIcon";
 
 const TASKBAR = 56;
 
@@ -53,7 +54,7 @@ export default function Win({ win }: { win: WindowState }) {
   const active = activeId === win.id;
 
   const geom = win.maximized
-    ? { left: 0, top: 0, width: "100%", height: `calc(100dvh - ${TASKBAR}px)` }
+    ? { left: 0, top: 0, width: "100%", height: "calc(100dvh - var(--taskbar-height, 56px))" }
     : { left: win.x, top: win.y, width: win.w, height: win.h };
 
   const ctrl =
@@ -82,7 +83,7 @@ export default function Win({ win }: { win: WindowState }) {
         onDoubleClick={() => toggleMax(win.id)}
         className="flex h-9 shrink-0 items-center gap-2 border-b border-border bg-chrome pl-3 pr-0"
       >
-        <app.icon className="h-4 w-4 text-primary" />
+        <AppIcon appId={win.appId} className="h-4 w-4 shrink-0" alt="" />
         <span className="truncate text-xs font-medium">{win.title}</span>
         <div className="ml-auto flex">
           <button className={ctrl} onClick={() => minimize(win.id)} aria-label="Minimize">

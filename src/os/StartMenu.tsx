@@ -3,6 +3,7 @@ import { Power, Settings, Search } from "lucide-react";
 import { APPS, type AppId } from "./apps";
 import { useWindows } from "./store";
 import { profile } from "@/data/portfolio";
+import AppIcon from "./AppIcon";
 
 const PINNED: AppId[] = ["mypc", "terminal", "techstack", "socials", "games", "paint"];
 const RECOMMENDED: AppId[] = ["resume", "projects", "about", "contact"];
@@ -31,7 +32,8 @@ export default function StartMenu({
     <div
       role="dialog"
       aria-label="Start menu"
-      className="animate-flyout fixed bottom-16 left-1/2 z-9998 w-[min(620px,92vw)] -translate-x-1/2 rounded-xl p-5 mica-strong shadow-flyout"
+      style={{ bottom: "calc(var(--taskbar-height, 56px) + 8px)" }}
+      className="animate-flyout fixed left-1/2 z-9998 w-[min(620px,92vw)] -translate-x-1/2 rounded-xl p-5 mica-strong shadow-flyout"
     >
       <div className="mb-4 flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2">
         <Search className="h-4 w-4 text-muted-foreground" />
@@ -57,7 +59,7 @@ export default function StartMenu({
               onClick={() => launch(id)}
               className="flex flex-col items-center gap-1.5 rounded-lg p-3 text-center transition-colors hover:bg-accent"
             >
-              <app.icon className="h-6 w-6 text-primary" strokeWidth={1.6} />
+              <AppIcon appId={id} className="h-8 w-8" alt="" />
               <span className="text-[11px] leading-tight">{app.title}</span>
             </button>
           );
@@ -76,7 +78,7 @@ export default function StartMenu({
               onClick={() => launch(id)}
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-accent"
             >
-              <app.icon className="h-5 w-5 text-primary" strokeWidth={1.6} />
+              <AppIcon appId={id} className="h-6 w-6 shrink-0" alt="" />
               <span className="text-sm">{app.title}</span>
             </button>
           );

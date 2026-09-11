@@ -90,7 +90,11 @@ export default function Desktop() {
       {/* readability layer */}
       <div className="pointer-events-none absolute inset-0 bg-background/10" aria-hidden />
 
-      <div key={refreshKey} className="animate-refresh absolute inset-0 bottom-14">
+      <div
+        key={refreshKey}
+        className="animate-refresh absolute inset-0"
+        style={{ bottom: "var(--taskbar-height, 56px)" }}
+      >
         <DesktopIcons />
         {windows.map((w) => (
           <Win key={w.id} win={w} />

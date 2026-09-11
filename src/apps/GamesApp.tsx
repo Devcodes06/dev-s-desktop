@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Bomb, Worm, Grid3X3 } from "lucide-react";
+import { Bomb, Worm, Grid3X3, Brain, Hash } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /* ---------------- shared ---------------- */
@@ -213,7 +213,7 @@ function Minesweeper() {
 
   const flag = (e: React.MouseEvent, i: number) => {
     e.preventDefault();
-    if (state !== "play") return;
+    if (state !== "play" || cells[i]?.open) return;
     setCells((cs) => cs.map((c, idx) => (idx === i ? { ...c, flag: !c.flag } : c)));
   };
 
@@ -317,11 +317,331 @@ function TicTacToe() {
   );
 }
 
+/* ---------------- Memory Match ---------------- */
+const MEMORY_PAIRS = ["🎮", "🚀", "💎", "⚡", "🌟", "🎯", "🎨", "🔮"];
+
+type MemoryCard = {
+  id: number;
+  symbol: string;
+  matched: boolean;
+};
+
+function createMemoryDeck(): MemoryCard[] {
+  const deck = [...MEMORY_PAIRS, ...MEMORY_PAIRS]
+    .map((symbol) => ({ symbol, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map((item, id) => ({ id, symbol: item.symbol, matched: false }));
+  return deck;
+}
+
+function MemoryMatch() {
+  const [cards, setCards] = useState<MemoryCard[]>(createMemoryDeck);
+  const [flipped, setFlipped] = useState<number[]>([]);
+  const [moves, setMoves] = useState(0);
+  const [best, submit] = useHighScore("memory");
+  const [won, setWon] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const handleCardClick = (id: number) => {
+    if (flipped.length >= 2 || flipped.includes(id) || cards[id]?.matched || won) {
+      return;
+    }
+
+    if (flipped.length === 0) {
+      setFlipped([id]);
+    } else if (flipped.length === 1) {
+      const firstId = flipped[0]!;
+      const secondId = id;
+      setFlipped([firstId, secondId]);
+      const nextMoves = moves + 1;
+      setMoves(nextMoves);
+
+      if (cards[firstId]!.symbol === cards[secondId]!.symbol) {
+        const nextCards = cards.map((c) =>
+          c.id === firstId || c.id === secondId ? { ...c, matched: true } : c,
+        );
+        setCards(nextCards);
+        setFlipped([]);
+        if (nextCards.every((c) => c.matched)) {
+          setWon(true);
+          submit(best + 1);
+        }
+      } else {
+        timeoutRef.current = setTimeout(() => {
+          setFlipped([]);
+          timeoutRef.current = null;
+        }, 650);
+      }
+    }
+  };
+
+  const reset = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = null;
+    setCards(createMemoryDeck());
+    setFlipped([]);
+    setMoves(0);
+    setWon(false);
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <p className="text-sm text-muted-foreground">
+        {won ? `Cleared in ${moves} moves!` : `Moves: ${moves}`} · Wins {best}
+      </p>
+      <div className="grid grid-cols-4 gap-2 rounded-md bg-muted p-2">
+        {cards.map((c) => {
+          const isFaceUp = flipped.includes(c.id) || c.matched;
+          return (
+            <button
+              key={c.id}
+              onClick={() => handleCardClick(c.id)}
+              disabled={isFaceUp || won}
+              aria-label={isFaceUp ? c.symbol : "Hidden card"}
+              className={cn(
+                "flex h-14 w-14 select-none items-center justify-center rounded-md border text-xl font-semibold transition-all",
+                isFaceUp
+                  ? c.matched
+                    ? "border-primary/40 bg-primary/15 text-primary cursor-default"
+                    : "border-border bg-card text-foreground cursor-default"
+                  : "border-border bg-secondary hover:bg-accent text-transparent cursor-pointer active:scale-95",
+              )}
+            >
+              {isFaceUp ? c.symbol : "?"}
+            </button>
+          );
+        })}
+      </div>
+      <button
+        onClick={reset}
+        className="rounded-md border border-border px-3 py-1.5 text-sm hover:bg-accent"
+      >
+        {won ? "Play again" : "New game"}
+      </button>
+    </div>
+  );
+}
+
+/* ---------------- 2048 ---------------- */
+function slideRow(row: number[]): { row: number[]; points: number } {
+  const nonZero = row.filter((v) => v !== 0);
+  const result: number[] = [];
+  let points = 0;
+  for (let i = 0; i < nonZero.length; i++) {
+    if (i + 1 < nonZero.length && nonZero[i] === nonZero[i + 1]) {
+      const merged = nonZero[i]! * 2;
+      result.push(merged);
+      points += merged;
+      i++;
+    } else {
+      result.push(nonZero[i]!);
+    }
+  }
+  while (result.length < 4) {
+    result.push(0);
+  }
+  return { row: result, points };
+}
+
+function spawnTile(board: number[]): number[] {
+  const empty: number[] = [];
+  board.forEach((v, i) => {
+    if (v === 0) empty.push(i);
+  });
+  if (empty.length === 0) return board;
+  const idx = empty[Math.floor(Math.random() * empty.length)]!;
+  const next = [...board];
+  next[idx] = Math.random() < 0.9 ? 2 : 4;
+  return next;
+}
+
+function init2048(): number[] {
+  return spawnTile(spawnTile(Array(16).fill(0)));
+}
+
+function hasMovesLeft(b: number[]): boolean {
+  if (b.some((v) => v === 0)) return true;
+  for (let r = 0; r < 4; r++) {
+    for (let c = 0; c < 4; c++) {
+      const curr = b[r * 4 + c]!;
+      if (c < 3 && curr === b[r * 4 + c + 1]) return true;
+      if (r < 3 && curr === b[(r + 1) * 4 + c]) return true;
+    }
+  }
+  return false;
+}
+
+function moveBoard(
+  board: number[],
+  dir: "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown",
+): { next: number[]; points: number; moved: boolean } {
+  const next = [...board];
+  let points = 0;
+
+  if (dir === "ArrowLeft") {
+    for (let r = 0; r < 4; r++) {
+      const row = [next[r * 4]!, next[r * 4 + 1]!, next[r * 4 + 2]!, next[r * 4 + 3]!];
+      const res = slideRow(row);
+      points += res.points;
+      for (let c = 0; c < 4; c++) next[r * 4 + c] = res.row[c]!;
+    }
+  } else if (dir === "ArrowRight") {
+    for (let r = 0; r < 4; r++) {
+      const row = [next[r * 4 + 3]!, next[r * 4 + 2]!, next[r * 4 + 1]!, next[r * 4]!];
+      const res = slideRow(row);
+      points += res.points;
+      for (let c = 0; c < 4; c++) next[r * 4 + 3 - c] = res.row[c]!;
+    }
+  } else if (dir === "ArrowUp") {
+    for (let c = 0; c < 4; c++) {
+      const col = [next[c]!, next[4 + c]!, next[8 + c]!, next[12 + c]!];
+      const res = slideRow(col);
+      points += res.points;
+      for (let r = 0; r < 4; r++) next[r * 4 + c] = res.row[r]!;
+    }
+  } else if (dir === "ArrowDown") {
+    for (let c = 0; c < 4; c++) {
+      const col = [next[12 + c]!, next[8 + c]!, next[4 + c]!, next[c]!];
+      const res = slideRow(col);
+      points += res.points;
+      for (let r = 0; r < 4; r++) next[(3 - r) * 4 + c] = res.row[r]!;
+    }
+  }
+
+  const moved = next.some((v, i) => v !== board[i]);
+  return { next, points, moved };
+}
+
+function getTileClass(val: number): string {
+  switch (val) {
+    case 0:
+      return "bg-secondary/40 text-transparent border-transparent";
+    case 2:
+      return "bg-card text-card-foreground border-border font-semibold";
+    case 4:
+      return "bg-secondary text-secondary-foreground border-border font-semibold";
+    case 8:
+      return "bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/30 font-bold";
+    case 16:
+      return "bg-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-500/30 font-bold";
+    case 32:
+      return "bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30 font-bold";
+    case 64:
+      return "bg-red-500/25 text-red-700 dark:text-red-300 border-red-500/40 font-bold";
+    case 128:
+      return "bg-yellow-500/30 text-yellow-800 dark:text-yellow-200 border-yellow-500/50 font-bold text-lg";
+    case 256:
+      return "bg-yellow-500/40 text-yellow-800 dark:text-yellow-200 border-yellow-500/60 font-bold text-lg";
+    case 512:
+      return "bg-primary/25 text-primary border-primary/40 font-bold text-lg";
+    case 1024:
+      return "bg-primary/40 text-primary-foreground border-primary/60 font-bold text-base";
+    case 2048:
+      return "bg-primary text-primary-foreground border-primary font-extrabold text-base ring-2 ring-primary/40";
+    default:
+      return "bg-primary text-primary-foreground border-primary font-extrabold text-sm";
+  }
+}
+
+function Game2048() {
+  const [board, setBoard] = useState<number[]>(init2048);
+  const [score, setScore] = useState(0);
+  const [dead, setDead] = useState(false);
+  const [best, submit] = useHighScore("2048");
+
+  const boardRef = useRef(board);
+  boardRef.current = board;
+  const scoreRef = useRef(score);
+  scoreRef.current = score;
+  const deadRef = useRef(dead);
+  deadRef.current = dead;
+
+  const handleMove = useCallback(
+    (dir: "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown") => {
+      if (deadRef.current) return;
+      const { next, points, moved } = moveBoard(boardRef.current, dir);
+      if (!moved) return;
+
+      const withSpawn = spawnTile(next);
+      const nextScore = scoreRef.current + points;
+      setBoard(withSpawn);
+      setScore(nextScore);
+      submit(nextScore);
+
+      if (!hasMovesLeft(withSpawn)) {
+        setDead(true);
+      }
+    },
+    [submit],
+  );
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+        handleMove(e.key as "ArrowLeft" | "ArrowRight" | "ArrowUp" | "ArrowDown");
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [handleMove]);
+
+  const reset = () => {
+    setBoard(init2048());
+    setScore(0);
+    setDead(false);
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <p className="text-sm text-muted-foreground">
+        Score {score} · Best {best} · arrow keys to move
+      </p>
+      <div className="grid grid-cols-4 gap-2 rounded-md bg-muted p-2">
+        {board.map((val, i) => (
+          <div
+            key={i}
+            className={cn(
+              "flex h-14 w-14 select-none items-center justify-center rounded-md border text-xl transition-all",
+              getTileClass(val),
+            )}
+          >
+            {val !== 0 ? val : ""}
+          </div>
+        ))}
+      </div>
+      {dead ? (
+        <button
+          onClick={reset}
+          className="rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground"
+        >
+          Game over — play again
+        </button>
+      ) : (
+        <button
+          onClick={reset}
+          className="rounded-md border border-border px-3 py-1.5 text-sm hover:bg-accent"
+        >
+          New game
+        </button>
+      )}
+    </div>
+  );
+}
+
 /* ---------------- shell ---------------- */
 const GAMES = [
   { id: "minesweeper", label: "Minesweeper", icon: Bomb, node: <Minesweeper /> },
   { id: "snake", label: "Snake", icon: Worm, node: <Snake /> },
   { id: "ttt", label: "Tic Tac Toe", icon: Grid3X3, node: <TicTacToe /> },
+  { id: "memory", label: "Memory Match", icon: Brain, node: <MemoryMatch /> },
+  { id: "2048", label: "2048", icon: Hash, node: <Game2048 /> },
 ];
 
 export default function GamesApp() {

@@ -6,7 +6,7 @@ import Desktop from "@/os/Desktop";
 import MobileShell from "@/os/MobileShell";
 import { profile } from "@/data/portfolio";
 
-const title = `${profile.name} — Developer Desktop Portfolio`;
+const title = "Windows 11";
 const description =
   "Explore Debargha Chowdhury's portfolio as a Windows 11-inspired desktop: projects, resume, IoT work, tech stack and contact details.";
 
