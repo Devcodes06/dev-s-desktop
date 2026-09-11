@@ -1,3 +1,4 @@
+// NOTE: No Lovable branding found in JSX. May be inside the PDF itself — user must provide a clean PDF.
 import { Download, ExternalLink, Printer, FileText } from "lucide-react";
 import { resume } from "@/data/portfolio";
 

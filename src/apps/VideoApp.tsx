@@ -31,20 +31,7 @@ export default function VideoApp() {
         {/* Dark gradient background */}
         <div className="absolute inset-0 bg-gradient-to-tr from-neutral-950 via-neutral-900 to-neutral-800 opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
 
-        {/* Video metadata overlay */}
-        <div className="pointer-events-none absolute inset-0 flex select-none flex-col justify-between p-4 sm:p-6">
-          <div className="w-full text-left">
-            <span className="rounded bg-black/60 px-2.5 py-1 text-xs font-medium text-neutral-300 backdrop-blur-sm">
-              YouTube
-            </span>
-          </div>
-          <div className="w-full text-left">
-            <h3 className="text-base font-semibold text-white drop-shadow-md sm:text-lg">
-              Rick Astley - Never Gonna Give You Up
-            </h3>
-            <p className="text-xs text-neutral-400">Official Music Video</p>
-          </div>
-        </div>
+
 
         {/* Centered white play triangle overlay with subtle hover scale */}
         <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20">

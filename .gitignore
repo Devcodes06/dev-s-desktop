@@ -31,6 +31,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Environment variables
+.env
+
 # Agent workspace logs
 .agents/
 

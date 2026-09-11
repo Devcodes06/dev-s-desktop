@@ -51,6 +51,9 @@ export function ProjectDetail({ project }: { project: Project }) {
             </ul>
           </Panel>
         </div>
+        {project.note && (
+          <p className="text-sm text-muted-foreground italic mt-2">{project.note}</p>
+        )}
         <Panel>
           {project.screenshots?.length ? (
             <div className="grid gap-3">
@@ -69,13 +72,11 @@ export function ProjectDetail({ project }: { project: Project }) {
               ))}
             </div>
           ) : project.screenshot ? (
-            <img src={project.screenshot} alt={`${project.name} screenshot`} className="w-full rounded-md" />
-          ) : (
-            <Placeholder>[ADD PROJECT SCREENSHOTS]</Placeholder>
-          )}
+            <img src={project.screenshot} alt={project.name} className="w-full rounded-md" />
+          ) : null}
         </Panel>
         <div className="flex flex-wrap gap-2 pb-2">
-          {project.github ? (
+          {project.github && (
             <a
               href={project.github}
               target="_blank"
@@ -84,10 +85,8 @@ export function ProjectDetail({ project }: { project: Project }) {
             >
               <Github className="h-4 w-4" /> GitHub
             </a>
-          ) : (
-            <Placeholder>[ADD GITHUB LINK]</Placeholder>
           )}
-          {project.demo ? (
+          {project.demo && (
             <a
               href={project.demo}
               target="_blank"
@@ -96,8 +95,6 @@ export function ProjectDetail({ project }: { project: Project }) {
             >
               <Globe className="h-4 w-4" /> View Live Project
             </a>
-          ) : (
-            <Placeholder>[ADD LIVE DEMO LINK]</Placeholder>
           )}
         </div>
       </div>

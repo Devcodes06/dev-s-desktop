@@ -9,6 +9,7 @@ import SearchOverlay from "./SearchOverlay";
 import ContextMenu from "./ContextMenu";
 import Notifications from "./Notifications";
 import Win from "./Window";
+import TechJokeNotification from "@/os/TechJokeNotification";
 
 const KONAMI = [
   "ArrowUp",
@@ -114,6 +115,7 @@ export default function Desktop() {
       )}
 
       <Notifications />
+      <TechJokeNotification />
 
       <Taskbar
         startOpen={start}

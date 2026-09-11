@@ -1,8 +1,3 @@
-import wallpaperAsset from "@/assets/wallpaper.jpg.asset.json";
-import urlShortenerShot from "@/assets/url-shortener.png.asset.json";
-import profileAsset from "@/assets/profile.jpg.asset.json";
-import resumeAsset from "@/assets/resume.pdf.asset.json";
-
 /**
  * SINGLE SOURCE OF TRUTH for the whole portfolio.
  * Update this file to change any content on the desktop.
@@ -20,16 +15,24 @@ export const profile = {
   location: "Burdwan, West Bengal, India",
   phone: "+91 9641829986",
   email: "debarghachowdhury.work@gmail.com",
-  photo: profileAsset.url,
-  wallpaper: wallpaperAsset.url,
+  photo: "/assets/profile/debargha.jpg",
+  wallpaper: "/assets/wallpaper/windows-11.jpg",
+  interests: [
+    "Crafting intelligent systems that learn faster than I forget things (Machine Learning)",
+    "Prompting large language models for fun, profit, and occasional existential dread (Generative AI)",
+    "Building AI agents that autonomously do tasks I was too lazy to automate myself (Agentic AI)",
+    "Designing backend architectures that don't collapse under pressure — unlike me during deadlines",
+    "Poking at microcontrollers and embedded systems until something blinks",
+    "Wiring up IoT devices and pretending my apartment is a smart home (it isn't)",
+  ],
 };
 
 export const resume = {
-  url: resumeAsset.url,
+  url: "/assets/resume/Debargha_Chowdhury_Resume.pdf",
   fileName: "Debargha_Chowdhury_Resume.pdf",
   fileType: "PDF Document",
+  size: "173 KB",
   updated: "2026",
-  size: `${(resumeAsset.size / 1024).toFixed(0)} KB`,
 };
 
 export const socials = [
@@ -54,8 +57,8 @@ export const socials = [
   {
     label: "LeetCode",
     icon: "code",
-    handle: "@Debargha007",
-    url: "https://leetcode.com/u/Debargha007/",
+    handle: "@Debarghaofficial",
+    url: "https://leetcode.com/u/Debarghaofficial/",
   },
   {
     label: "Instagram",
@@ -76,8 +79,9 @@ export type Project = {
   contribution: string[];
   tech: string[];
   features: string[];
-  github: string;
-  demo: string;
+  github: string | null;
+  demo: string | null;
+  note?: string;
   screenshot?: string;
   screenshots?: { src: string; caption: string }[];
 };
@@ -108,13 +112,13 @@ export const projects: Project[] = [
       "Unit + integration test suite",
       "Postman API collection",
     ],
-    github: "",
+    github: "https://github.com/Devcodes06/URL-Shortener.git",
     demo: "https://url-shortener-gray-two.vercel.app/",
     screenshot: "/assets/projects/url-shortener.png",
     screenshots: [
       {
-        src: urlShortenerShot.url,
-        caption: "Snip — the live URL shortener landing page.",
+        src: "/assets/projects/url-shortener.png",
+        caption: "Snip — AI-powered URL shortener landing page.",
       },
     ],
   },
@@ -142,8 +146,16 @@ export const projects: Project[] = [
       "Crop recommendation API",
       "Regression check for baud-rate faults",
     ],
-    github: "",
-    demo: "",
+    github: null,
+    demo: null,
+    note: "Still growing in local dev — deployment is pending a miracle, a stable Wi-Fi connection, and favorable wind conditions. 🌾",
+    screenshot: "/assets/projects/krishidrishti.png",
+    screenshots: [
+      {
+        src: "/assets/projects/krishidrishti.png",
+        caption: "KrishiDrishti — IoT-powered crop diagnosis and soil telemetry interface.",
+      },
+    ],
   },
 ];
 
@@ -152,99 +164,126 @@ export type SkillCategory = {
   items: { name: string; note: string }[];
 };
 
-export const skills: SkillCategory[] = [
-  {
-    category: "Programming",
-    items: [
-      { name: "JavaScript", note: "Primary language for backend and web work" },
-      { name: "TypeScript", note: "Typed APIs and application code" },
-      { name: "Java", note: "OOP and coursework projects" },
-      { name: "Python", note: "IoT backends and scripting" },
-      { name: "C", note: "Fundamentals and embedded context" },
-      { name: "Bash Scripting", note: "Automating the things I refuse to type twice" },
-    ],
-  },
-  {
-    category: "Frontend / Web Development",
-    items: [
-      { name: "HTML", note: "Semantic structure for web interfaces" },
-      { name: "CSS", note: "Layout, responsive design and styling" },
-      { name: "EJS", note: "Server-rendered templates for Express apps" },
-      { name: "React", note: "Component-based user interfaces" },
-      { name: "Bootstrap", note: "Fast, consistent UI scaffolding" },
-    ],
-  },
-  {
-    category: "Testing & QA",
-    items: [
-      { name: "Mocha", note: "Unit and integration test runner" },
-      { name: "Chai", note: "Assertions" },
-      { name: "Sinon", note: "Mocking and test isolation" },
-      { name: "Postman", note: "API collections and manual exploratory testing" },
-    ],
-  },
-  {
-    category: "Backend",
-    items: [
-      { name: "Node.js", note: "Server-side JavaScript runtime" },
-      { name: "Express.js", note: "REST APIs with MVC architecture" },
-      { name: "FastAPI", note: "Python APIs for IoT data" },
-      { name: "JWT Authentication", note: "Token-based auth flows" },
-    ],
-  },
-  {
-    category: "Databases",
-    items: [
-      { name: "MongoDB", note: "Document storage for app data" },
-      { name: "MySQL", note: "Relational schemas and queries" },
-      { name: "PostgreSQL", note: "Relational database for application data" },
-      { name: "Redis", note: "Caching and fast key-value storage" },
-      { name: "PL/SQL", note: "Stored procedures and database logic" },
-    ],
-  },
-  {
-    category: "Cloud & DevOps",
-    items: [
-      { name: "Docker", note: "Containerised builds" },
-      { name: "GitHub Actions", note: "CI workflows" },
-      { name: "Vercel", note: "Deployment of full-stack projects" },
-      { name: "Linux CLI", note: "Daily driver for development" },
-      { name: "Nginx", note: "Reverse proxy and web server configuration" },
-    ],
-  },
-  {
-    category: "IoT & Embedded",
-    items: [
-      { name: "Raspberry Pi", note: "Edge gateway for sensor systems" },
-      { name: "ESP32", note: "Sensor nodes" },
-      { name: "RS485", note: "Industrial sensor communication" },
-      { name: "Arduino", note: "Microcontroller prototyping and firmware" },
-      {
-        name: "Sensor & Actuator Integration",
-        note: "Wiring, reading and driving a range of sensors and actuators",
-      },
-    ],
-  },
-  {
-    category: "Tools",
-    items: [
-      { name: "Git", note: "Version control" },
-      { name: "GitHub", note: "Collaboration and hosting" },
-      { name: "VS Code", note: "Editor" },
-      { name: "Google Colab", note: "Notebooks for experiments and data work" },
-      { name: "Kaggle", note: "Datasets and practice notebooks" },
-      { name: "Wokwi", note: "Simulating circuits before risking real hardware" },
-      { name: "ThingSpeak", note: "IoT data logging and dashboards" },
-      { name: "Cisco Packet Tracer", note: "Network topology design and labs" },
-    ],
-  },
-  {
-    category: "Currently Learning",
-    items: [
-      { name: "[ADD TECHNOLOGY]", note: "Currently learning. Bugs included at no extra cost." },
-    ],
-  },
+export const currentlyLearning: string[] = [
+  "Applied Machine Learning and model fine-tuning workflows",
+  "Generative AI system design and large language model architectures",
+  "Natural Language Processing and transformer-based understanding",
+  "Agentic AI patterns, tool-use frameworks, and autonomous decision pipelines",
 ];
+
+export const skills: SkillCategory[] & { currentlyLearning: string[] } = Object.assign(
+  [
+    {
+      category: "Programming",
+      items: [
+        { name: "JavaScript", note: "Primary language for backend and web work" },
+        { name: "TypeScript", note: "Typed APIs and application code" },
+        { name: "Java", note: "OOP and coursework projects" },
+        { name: "Python", note: "IoT backends and scripting" },
+        { name: "C", note: "Fundamentals and embedded context" },
+        { name: "Bash Scripting", note: "Automating the things I refuse to type twice" },
+      ],
+    },
+    {
+      category: "Frontend / Web Development",
+      items: [
+        { name: "HTML", note: "Semantic structure for web interfaces" },
+        { name: "CSS", note: "Layout, responsive design and styling" },
+        { name: "EJS", note: "Server-rendered templates for Express apps" },
+        { name: "React", note: "Component-based user interfaces" },
+        { name: "Bootstrap", note: "Fast, consistent UI scaffolding" },
+      ],
+    },
+    {
+      category: "Testing & QA",
+      items: [
+        { name: "Mocha", note: "Unit and integration test runner" },
+        { name: "Chai", note: "Assertions" },
+        { name: "Sinon", note: "Mocking and test isolation" },
+        { name: "Postman", note: "API collections and manual exploratory testing" },
+      ],
+    },
+    {
+      category: "Backend",
+      items: [
+        { name: "Node.js", note: "Server-side JavaScript runtime" },
+        { name: "Express.js", note: "REST APIs with MVC architecture" },
+        { name: "FastAPI", note: "Python APIs for IoT data" },
+        { name: "JWT Authentication", note: "Token-based auth flows" },
+      ],
+    },
+    {
+      category: "Databases",
+      items: [
+        { name: "MongoDB", note: "Document storage for app data" },
+        { name: "MySQL", note: "Relational schemas and queries" },
+        { name: "PostgreSQL", note: "Relational database for application data" },
+        { name: "Redis", note: "Caching and fast key-value storage" },
+        { name: "PL/SQL", note: "Stored procedures and database logic" },
+      ],
+    },
+    {
+      category: "Cloud & DevOps",
+      items: [
+        { name: "Docker", note: "Containerised builds" },
+        { name: "GitHub Actions", note: "CI workflows" },
+        { name: "Vercel", note: "Deployment of full-stack projects" },
+        { name: "Linux CLI", note: "Daily driver for development" },
+        { name: "Nginx", note: "Reverse proxy and web server configuration" },
+      ],
+    },
+    {
+      category: "IoT & Embedded",
+      items: [
+        { name: "Raspberry Pi", note: "Edge gateway for sensor systems" },
+        { name: "ESP32", note: "Sensor nodes" },
+        { name: "RS485", note: "Industrial sensor communication" },
+        { name: "Arduino", note: "Microcontroller prototyping and firmware" },
+        {
+          name: "Sensor & Actuator Integration",
+          note: "Wiring, reading and driving a range of sensors and actuators",
+        },
+      ],
+    },
+    {
+      category: "Tools",
+      items: [
+        { name: "Git", note: "Version control" },
+        { name: "GitHub", note: "Collaboration and hosting" },
+        { name: "VS Code", note: "Editor" },
+        { name: "Google Colab", note: "Notebooks for experiments and data work" },
+        { name: "Kaggle", note: "Datasets and practice notebooks" },
+        { name: "Wokwi", note: "Simulating circuits before risking real hardware" },
+        { name: "ThingSpeak", note: "IoT data logging and dashboards" },
+        { name: "Cisco Packet Tracer", note: "Network topology design and labs" },
+      ],
+    },
+    {
+      category: "Currently Learning",
+      items: [
+        {
+          name: "Applied Machine Learning and model fine-tuning workflows",
+          note: "Model fine-tuning workflows and practical applications",
+        },
+        {
+          name: "Generative AI system design and large language model architectures",
+          note: "Large language model architectures and system design",
+        },
+        {
+          name: "Natural Language Processing and transformer-based understanding",
+          note: "Transformer-based understanding and language processing",
+        },
+        {
+          name: "Agentic AI patterns, tool-use frameworks, and autonomous decision pipelines",
+          note: "Tool-use frameworks and autonomous decision pipelines",
+        },
+      ],
+    },
+  ],
+  {
+    currentlyLearning,
+  },
+);
 
 export const education = [
   {
@@ -292,7 +331,7 @@ export const achievements = [
 
 export type GalleryItem = { src: string; title: string; description: string };
 
-/** Add local images here — e.g. import shot from "@/assets/shot.jpg.asset.json" */
+/** Add local images here — e.g. "/assets/projects/screenshot.png" */
 export const gallery: GalleryItem[] = [
   {
     src: profile.photo,
